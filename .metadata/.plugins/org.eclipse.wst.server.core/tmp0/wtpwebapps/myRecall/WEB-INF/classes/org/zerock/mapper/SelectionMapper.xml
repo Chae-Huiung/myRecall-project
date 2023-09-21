@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.SelectionMapper">
+
+<!--car_table에서 brand list 반환 -->
+<select id="selectBrands" resultType="String">
+	select distinct brand from car_table order by brand asc 
+</select>
+
+<select id ="selectCars" parameterType="String" resultType="String">
+	select distinct car_name from car_table where brand =#{brand} order by car_name asc
+</select>
+
+<resultMap id ="carResultMap" type="org.zerock.domain.CarVO">
+	<result property="brand" column ="brand"/>
+	<result property="carName" column ="car_name"/>
+	<result property="fromDate" column ="from_date"/>
+	<result property="toDate" column ="to_date"/>
+</resultMap>
+
+<select id ="selectYears" parameterType="String" resultMap="carResultMap">
+	select * from car_table where brand =#{brand} and car_name =#{car} order by from_date asc, to_date asc
+</select>
+
+
+</mapper>
+

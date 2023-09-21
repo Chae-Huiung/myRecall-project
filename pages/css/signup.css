@@ -1,0 +1,79 @@
+#signupArticle {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+
+    width: 500px;
+    height: 500px;
+    display: none;
+}
+
+#signupContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#signupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputContainer {
+    margin-top: 10px;
+
+}
+
+input {
+    width: 250px;
+    height: 30px;
+    margin-right: 10px;
+
+    border: 1px solid;
+    border-color: gainsboro;
+}
+
+input:focus {
+    outline-color: #26CEFF;
+}
+
+.checkBtn {
+    width: 90px;
+    background-color: #FF7867;
+    outline: none;
+    border: 1px solid rgb(0, 0, 0, 0);
+    border-radius: 5px;
+}
+
+.pwInput:nth-of-type(1) {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.inputContainer:nth-of-type(5) {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+select {
+    width: 110px;
+    margin: 0px 10px;
+    border-color: gainsboro;
+    color: gray;
+}
+
+
+#enrollBtn {
+    width: 300px;
+    height: 50px;
+    margin-top: 40px;
+    border-radius: 5px;
+    border: 1px solid rgb(0, 0, 0, 0);
+    background-color: #26CEFF;
+}

@@ -1,0 +1,216 @@
+/* form요소 스타일 */
+#postForm {
+    /* border: 1px solid black; */
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 헤드라인(리콜 등록하기) 스타일  */
+#headline {
+    width: 800px
+}
+
+span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* 첨부한 이미지 div */
+#uploadResult {
+    margin: 10px;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 첨부한 이미지 css */
+.humbnailContainer {
+    width: 180px;
+    height: 220px;
+    border: 1px solid gainsboro
+}
+
+#uploadResult img {
+    width: 180px;
+    height: 200px;
+    border: 1px solid gainsboro
+}
+
+
+/* 뒤로가기, 카카오톡 보내기 버튼 */
+.buttonContaier {
+    width: 800px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonContaier button {
+    outline: none;
+    border-radius: 5px;
+    border-color: rgb(0, 0, 0, 0);
+    width: 50px;
+    margin-left: 5px;
+}
+
+.buttonContaier button:hover {
+    opacity: 90%;
+}
+
+#backPostBtn {
+    background-color: #19C37D;
+}
+
+#deletePostBtn {
+    background-color: #FF7867;
+}
+
+#sendMsgBtn {
+    width: 100px;
+    background-color: #FEE512;
+}
+
+#replyBtn {
+    width: 100px;
+    background-color: #26CEFF;
+}
+
+/* 첨부파일 이미지 next 버튼 */
+#nextBtnContainer {
+    position: absolute;
+    top: 200px;
+    /* border: 1px solid black; */
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nextBtn {
+    width: 40px;
+    height: 100px;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextBtn i {
+    font-size: 40px;
+    color: #26CEFF;
+}
+
+
+/* 테이블 스타일 */
+table {
+    border-collapse: collapse;
+    width: 800px;
+    height: 300px;
+    border: 1px solid rebeccapurple;
+}
+
+tr {
+    border: 1px solid gray;
+}
+
+.head {
+    width: 300px;
+    background-color: #26CEFF;
+}
+
+td {
+    text-align: center;
+}
+
+#recallTextHead {
+    background-color: #26CEFF;
+    width: 100%;
+}
+
+#recallContent td {
+    text-align: left;
+}
+
+/* 댓글 리스트 스타일 */
+#replyContainer {
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* border: 1px solid black; */
+}
+
+/* 댓글 헤더 스타일 */
+#replyHeader {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 10px 0px;
+    /* background-color: #19C37D; */
+    font-size: large;
+}
+
+/* 댓글 입력 폼 스타일 */
+#replyForm {
+    /* display: none; */
+}
+
+#replyForm textarea {
+    width: 100%;
+    background-color: #F4F4F3;
+}
+
+#replySubmitBtn {
+    padding: 2px 2px;
+    outline: none;
+    border: 1px solid rgb(0, 0, 0, 0);
+    border-radius: 5px;
+    background-color: #FF7867;
+}
+
+#replies {
+    list-style: none;
+}
+
+.replyList {
+    border-bottom: 1px solid gainsboro;
+    margin: 10px 0px;
+}
+
+.idAndDate {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 댓글 페이징 버튼 스타일 */
+
+#replyPageBtnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#replyPageBtnList {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: fit-content;
+}
+
+#replyPageBtnList li {
+    list-style: none;
+    text-align: center;
+
+    color: gray;
+    width: 45px;
+    border: 1px solid gainsboro;
+}
+
+#replyPageBtnList li:hover {
+    color: #26CEFF;
+}

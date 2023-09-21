@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리콜 등록하기</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+
+    <!--css -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/createPage.css">
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!--구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="desktopContainer">
+            <div id="logoContainer">
+                <a href=""><img id="mainLogo" src="img/logo.png"></a>
+            </div>
+            <div id="searchContainer">
+                <div id="searchInput">
+                    <input type="text" placeholder="차량명 및 리콜사유 등을 검색해보세요!" />
+                    <button>
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+            <!--로그아웃 상태-->
+            <div id="BtnContainer">
+                <button id="signupBtn">회원가입</button>
+                <button id="loginBtn">로그인</button>
+            </div>
+
+            <!--로그인 상태-->
+            <!-- <div class="dropdown">
+                <i class="fas fa-user"></i>
+                <div class="dropdownMenu">
+                    <a href="">로그아웃</a>
+                    <a href="">마이페이지</a>
+
+                </div>
+            </div> -->
+        </div>
+    </header>
+    <main>
+        <form id="postForm" action="" method>
+            <div id="headline">
+                <span>리콜 등록하기</span>
+            </div>
+
+            <!-- 첨부파일 섬네일 이미지 -->
+            <div id='uploadResult'>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+            </div>
+            <!--첨부파일 이미지 next 버튼 -->
+            <div id="nextBtnContainer">
+                <div class="nextBtn">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </div>
+                <div class="nextBtn">
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+
+            <!--이미지 등록 input -->
+            <div class="inputContainer" id="imgContainer">
+                <div>리콜사진</div>
+                <label for="fileUploadInput">files</label>
+                <input type="file" id="fileUploadInput" multiple files>
+            </div>
+
+            <!--input 요소 입력 -->
+            <div class="inputContainer">
+                <label for="brand">제작자</label>
+                <input id="brand" type="text" placeholder="제작사" list="brandSearchOpt">
+                <datalist id="brandSearchOpt">
+                    <option value="폭스바겐그룹코리아 주식회사"></option>
+                </datalist>
+            </div>
+
+            <div class="inputContainer">
+                <label for="carName">차량명</label>
+                <input id="carName" type="text" placeholder="차량명" list="carNameSearchOpt">
+                <datalist id="carNameSearchOpt">
+                    <option value="jeta"></option>
+                </datalist>
+            </div>
+
+            <div class="inputContainer">
+                <label for="fromDate">생산기간(from)</label>
+                <input id="fromDate" type="date">
+            </div>
+            <div class="inputContainer">
+                <label for="toDate">생산기간(to)</label>
+                <input id="toDate" type="date">
+            </div>
+
+            <div id="textContainer">
+                <label for="recallText">리콜사유</label>
+                <textarea id="recallText"></textarea>
+            </div>
+
+            <!-- form 저장,삭제,수정 버튼 -->
+            <div class="buttonContaier">
+                <button id="createPostBtn" type="submit">저장</button>
+                <button id="deletePostBtn" type="reset">삭제</button>
+                <button id="modifyPostBtn" type="button">수정</button>
+            </div>
+
+        </form>
+
+    </main>
+    <footer>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

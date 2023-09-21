@@ -1,0 +1,7 @@
+#alarmContainer{
+	display:flex;
+	width:400px;
+	height:500px;
+	border:1px solid black;
+	background-color:white;
+}

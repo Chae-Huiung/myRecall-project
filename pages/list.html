@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리콜 리스트</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+
+    <!--css -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/listPage.css">
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!--구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="desktopContainer">
+            <div id="logoContainer">
+                <a href=""><img id="mainLogo" src="img/logo.png"></a>
+            </div>
+            <div id="searchContainer">
+                <div id="searchInput">
+                    <input type="text" placeholder="차량명 및 리콜사유 등을 검색해보세요!" />
+                    <button>
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+            <!--로그아웃 상태-->
+            <div id="BtnContainer">
+                <button id="signupBtn">회원가입</button>
+                <button id="loginBtn">로그인</button>
+            </div>
+
+            <!--로그인 상태-->
+            <!-- <div class="dropdown">
+                <i class="fas fa-user"></i>
+                <div class="dropdownMenu">
+                    <a href="">로그아웃</a>
+                    <a href="">마이페이지</a>
+
+                </div>
+            </div> -->
+        </div>
+    </header>
+    <main>
+        <!--selection 선택 후 검색하는 섹션 -->
+        <section id="selectionSection">
+            <div id="container">
+
+                <p>차량결함 리콜 조회 및<br>카카오톡 알림 서비스</p>
+
+                <div class="selectContainer">
+                    <select name="brand" class="select">
+                        <option>brand</option>
+                        <option value="apple">현대</option>
+                        <option value="orange">기아</option>
+                        <option value="grape">쌍용</option>
+                        <option value="melon">벤츠</option>
+                    </select>
+
+                    <!--https://pulpul8282.tistory.com/18  -->
+                    <select name="car" class="select">
+                        <option>car</option>
+                        <option value="apple">소나타</option>
+                        <option value="orange">그랜져</option>
+                        <option value="grape">산타페</option>
+                        <option value="melon">아반떼</option>
+                    </select>
+                    <select name="year" class="select">
+                        <option>year</option>
+                        <option value="orange">2023</option>
+                        <option value="grape">2022</option>
+                        <option value="melon">2021</option>
+                    </select>
+                    <button id="searchBtn" type="submit">검색</button>
+                </div>
+            </div>
+        </section>
+        <!--검색결과 게시판 보여주는 섹션-->
+        <section id="listSection">
+            <table>
+                <thead>
+                    <tr>
+                        <th>번호</th>
+                        <th>제작사</th>
+                        <th>차량명</th>
+                        <th>리콜사유</th>
+                        <th>개시일</th>
+                    </tr>
+                </thead>
+                <tr class="postRow">
+                    <td>1</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>2</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>3</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>4</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>5</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>6</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>7</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>8</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>9</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+                <tr class="postRow">
+                    <td>10</td>
+                    <td>혼다코리아</td>
+                    <td>accord</td>
+                    <td>에어백 불량</td>
+                    <td>2016-06-12</td>
+                </tr>
+
+            </table>
+            <!-- 페이징 버튼 -->
+            <div id="pageBtn">
+                <ul>
+                    <li>prev</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>next</li>
+
+                </ul>
+            </div>
+        </section>
+
+    </main>
+    <footer>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+package org.zerock.mapper;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.zerock.domain.CarVO;
+
+@Mapper
+public interface SearchMapper {
+
+	//제조사 셀렉션 list select 
+	public ArrayList<String> selectBrands();
+	
+	//제조사 셀렉션 값을 받아 cars list select 후 반환 
+	public ArrayList<String> selectCars(@Param("brand")String brand);
+	
+	//제조사, 차량 selection 값을 받아 year list select 후 반환 
+	public ArrayList<CarVO> selectYears(@Param("brand")String brand, @Param("car") String car);
+}

@@ -1,0 +1,26 @@
+package org.zerock.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.zerock.mapper.ReplyMapper;
+
+@Service
+public class ReplyService {
+
+	@Autowired
+	ReplyMapper replyMapper;
+	
+	public int submitReply(String reply,int recallNum, String memberId){
+		
+		int value;
+		try{
+			value =replyMapper.submitReply(reply, recallNum, memberId);
+		}catch (Exception e) {
+			throw e;
+		}
+		
+		
+		
+		
+	};
+}

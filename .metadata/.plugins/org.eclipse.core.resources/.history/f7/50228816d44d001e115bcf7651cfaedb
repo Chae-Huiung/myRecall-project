@@ -1,0 +1,17 @@
+package org.zerock.service;
+
+import java.util.ArrayList;
+
+import org.springframework.stereotype.Service;
+import org.zerock.domain.RecallVO;
+
+@Service
+public class SearchService {
+
+	public ArrayList<RecallVO> getRecallPosts(String searchStr,int page, int size){
+		
+		
+		
+		
+	}
+}

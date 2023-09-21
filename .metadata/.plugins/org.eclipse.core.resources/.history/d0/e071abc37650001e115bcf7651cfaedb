@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+a:visited{
+	text-decoration: none;
+	color:inherit;
+}
+a:linked{
+	text-decoration: none;
+	color:inherit;
+}
+
+.desktopContainer {
+    margin: 0px 10vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.desktopContainer div {
+    width: 500px;
+}
+
+#logoContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#searchContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#searchInput {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px;
+    height: 50px;
+    border: 2px solid #26CEFF;
+    border-radius: 30px;
+
+}
+
+#searchInput input {
+    width: 300px;
+    margin: 0px 10px;
+    border: none;
+    outline: none;
+}
+
+#searchInput button {
+    background-color: white;
+    border: none;
+    margin-right: 10px;
+}
+
+#searchInput button i {
+    font-size: x-large;
+    width: 50px;
+    height: 10px;
+}
+
+
+#BtnContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+#mainLogo {
+    /* border: 1px solid black; */
+    width: 300px;
+    /* outline: 1px solid #7683F3; */
+
+}
+
+/* 회원가입, 로그인 버튼 스타일 */
+#BtnContainer button {
+    width: 100px;
+    height: 40px;
+    margin: 3px;
+    border: 1px solid white;
+    border-radius: 10px;
+}
+
+#signupBtn {
+    background-color: #ff7867;
+}
+
+#logoutBtn {
+    background-color: #ff7867;
+}
+
+#myPageBtn {
+    background-color: #26CEFF;
+}

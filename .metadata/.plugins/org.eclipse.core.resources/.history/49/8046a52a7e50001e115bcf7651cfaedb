@@ -1,0 +1,7 @@
+$(document).ready(function () {
+  $(".pageBtnList").on("click", function (event) {
+    var clickedBtn = $(this); // $(this)를 사용하여 현재 클릭된 요소를 선택
+    alert("clicked"); // 올바른 alert 함수 사용
+    clickedBtn.css("background-color", "red"); // 배경색을 "red"로 설정
+  });
+});

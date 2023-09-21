@@ -1,0 +1,12 @@
+package org.zerock.domain;
+
+public class PageCriteria {
+	
+	int total; // 검색 조건에 해당하는 게시물 개수 
+	int size; // 한 페이지 당 불러올 게시물 개수
+	int page; // 현재 페이지 번호 
+	int totalPages =(int) Math.ceil((double)total/size); //총 페이지 수 
+	boolean prev; // 이전 페이지 버튼 
+	boolean next; // 다음 페이지 버튼 
+
+}

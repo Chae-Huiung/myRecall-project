@@ -1,0 +1,15 @@
+#alarmContainer{
+	display:flex;
+	flex-direction:column;
+	align-items:center;
+
+	width:400px;
+	height:500px;
+	border:1px solid black;
+	background-color:white;
+}
+
+#alarmContainer h3{
+	width:100px;
+	height: 30px;
+}

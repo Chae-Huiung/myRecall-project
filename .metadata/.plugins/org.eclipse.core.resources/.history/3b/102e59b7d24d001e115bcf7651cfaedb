@@ -1,0 +1,12 @@
+package org.zerock.service;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class SearchService {
+
+	public void getRecallPosts(String searchStr){
+		
+		
+	}
+}

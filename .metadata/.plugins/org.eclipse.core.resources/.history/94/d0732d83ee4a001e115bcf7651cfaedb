@@ -1,0 +1,279 @@
+<%@page import="org.zerock.domain.RecallVO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>recall post page</title>
+<link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
+
+<!-- jquery cdn -->
+<script src="https://code.jquery.com/jquery-3.7.0.js"
+	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+	crossorigin="anonymous"></script>
+<!--css -->
+<link rel="stylesheet" href="resources/css/header.css">
+<link rel="stylesheet" href="resources/css/footer.css">
+<link rel="stylesheet" href="resources/css/mainPage.css">
+<link rel="stylesheet" href="resources/css/login.css">
+<link rel="stylesheet" href="resources/css/signup.css">
+<link rel="stylesheet" href="resources/css/postPage.css">
+
+<!--구글 폰트 링크 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
+	rel="stylesheet">
+</head>
+
+<body>
+	<header>
+		<div class="desktopContainer">
+			<div id="logoContainer">
+				<a href=""><img id="mainLogo" src="resources/img/logo.png"></a>
+			</div>
+			<div id="searchContainer">
+				<div id="searchInput">
+					<input type="text" placeholder="차량명 및 리콜사유 등을 검색해보세요!" />
+					<button>
+						<i class="fas fa-search-plus"></i>
+					</button>
+				</div>
+
+			</div>
+			<div id="BtnContainer">
+				<c:choose>
+					<c:when test="${memberId==null}">
+						<button id="signupBtn">회원가입</button>
+						<button id="loginBtn">로그인</button>
+					</c:when>
+					<c:when test="${memberId!=null}">
+						<button id="myPageBtn">마이페이지</button>
+						<button id="logoutBtn">로그아웃</button>
+					</c:when>
+
+				</c:choose>
+
+			</div>
+		</div>
+	</header>
+
+	<main>
+		 <div id="postForm">
+            <div id="headline">
+                <span>리콜 상세정보</span>
+            </div>
+
+        
+           <!-- 첨부파일 섬네일 이미지 -->
+           <!--     
+            <div id='uploadResult'>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+            </div>
+            첨부파일 이미지 next 버튼
+            <div id="nextBtnContainer">
+                <div class="nextBtn">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </div>
+                <div class="nextBtn">
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div> -->
+            <div id="postTableContainer">
+                <table>
+                    <tr>
+                        <th class="head">제작사</th>
+                        <td>${post.brand}</td>
+                    </tr>
+                    <tr>
+                        <th class="head">차량명</th>
+                        <td>${post.carName}</td>
+                    </tr>
+                    <tr>
+                        <th class="head">생산기간(from)</th>
+                        <td>${post.fromDate}</td>
+                    </tr>
+                    <tr>
+                        <th class="head">생산기간(to)</th>
+                        <td>${post.toDate}</td>
+                    </tr>
+                    <tr id="recallTextHead">
+                        <th colspan="2">리콜사유</th>
+                    </tr>
+                    <tr id="recallContent">
+                        <td colspan="2"><c:out value ="${post.recallReason}"></c:out></td>
+                    </tr>
+
+
+
+                </table>
+            </div>
+            <!--뒤로가기 버튼,카카오톡 알림 버튼,댓글 버튼-->
+            <div class="buttonContaier">
+                <div>
+                    <button id="backPostBtn" type="submit">back</button>
+                    <button id="sendMsgBtn" type="button">kakaoTalk</button>
+                </div>
+                <div>
+                    <button id="replyBtn" type="button">reply</button>
+                </div>
+            </div>
+            <!-- 댓글-->
+            <div id="replyContainer">
+                <!-- 댓글 헤더 -->
+                <div id="replyHeader">
+                    <i class="fas fa-comment-dots"> reply</i>
+                </div>
+                <!-- 댓글 달기 -->
+                <c:choose>
+                	<c:when test="${memberId != null}">
+                	
+                	</c:when>
+                </c:choose>
+                <form id="replyForm" action="recallPost/${post.recallNum}/submitReply" method="post">
+                    <textarea name ="replyText"></textarea>
+                    <button id="replySubmitBtn" type="submit">submit</button>
+                </form>
+                <!-- 댓글 리스트 -->
+                <ul id="replies">
+                    <li class="replyList">
+                        <div class="idAndDate">
+                            <strong id="userId">ID: 라이언</strong>
+                            <small id="replyDate">2016-11-11</small>
+                        </div>
+                        <div class="replyText">
+                            <p>등속조인트 교환이후에도 증상이 해결되지 않습니다.</p>
+                        </div>
+                    </li>
+                    <li class="replyList">
+                        <div class="idAndDate">
+                            <strong id="userId">ID: 라이언</strong>
+                            <small id="replyDate">2016-11-11</small>
+                        </div>
+                        <div class="replyText">
+                            <p>등속조인트 교환이후에도 증상이 해결되지 않습니다.</p>
+                        </div>
+                    </li>
+                </ul>
+                <!-- 댓글 페이징 버튼 -->
+                <div id="replyPageBtnContainer">
+                    <ul id="replyPageBtnList">
+                        <li>prev</li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>10</li>
+                        <li>next</li>
+
+                    </ul>
+                </div>
+            </div>
+
+
+		<!-- 로그인 버튼 클릭 시 모달로 로그인 화면 보여주는 article -->
+		<article id="loginArticle">
+			<div id="loginContainer">
+				<a href=""> <img id="logoImg" src="resources/img/logo.png">
+				</a>
+				<form id="loginForm" action="/login" post="post">
+					<div class="loginInput">
+						<input id="LoginidInput" type="email" placeholder="이메일"> <input
+							id="pwInput" type="password" placeholder="비밀번호">
+					</div>
+					<button id="loginBtn">로그인</button>
+				</form>
+				<p>
+					<a href="">아이디 찾기</a> <a href="">비밀번호 찾기</a> <a href="">회원가입</a>
+				</p>
+				<div class="otherLoginContainer">
+					<button id="googleLoginBtn" type="button">
+						<img src="resources/img/googleLoginButton.png">
+					</button>
+				</div>
+			</div>
+		</article>
+		<!-- 회원가입 버튼 클릭 시 모달로 회원가입 화면 보여주는 article -->
+		<article id="signupArticle">
+			<div id="signupContainer">
+				<a href=""> <img id="logoImg" src="resources/img/logo.png">
+				</a>
+				<form id="signupForm" action="/signUp/register" method="post">
+
+					<div class="inputContainer">
+						<input id="SignUpidInput" type="email" placeholder="이메일">
+						<button class="checkBtn" id="emailCheckBtn" type="button">check</button>
+					</div>
+					<div class="inputContainer">
+						<input class="pwInput" type="password" placeholder="비밀번호">
+						<input class="pwInput" type="password" placeholder="비밀번호">
+						<button class="checkBtn" id="pwCheckBtn" type="button">check</button>
+					</div>
+					<div class="inputContainer">
+						<input id="phoneNumInput" type="tel" placeholder="전화번호">
+						<button class="checkBtn" id="sendCodeBtn" type="button">send
+							code</button>
+					</div>
+					<div class="inputContainer">
+						<input id="codeInput" type="text" placeholder="코드">
+						<button class="checkBtn" id="codeCheckBtn" type="button">check
+							code</button>
+					</div>
+					<div class="inputContainer">
+						<select id="brandSel">
+							<option>제조사</option>
+							<c:forEach items="${brands}" var="brand">
+								<option value="${brand}">${brand}</option>
+							</c:forEach>
+						</select> <select id="carSel">
+							<option>차량명</option>
+						</select> <select id="yearSel">
+							<option>생산일</option>
+						</select>
+					</div>
+					<button id="enrollBtn">회원가입</button>
+					<div id="restTime" style="display: none;"></div>
+				</form>
+			</div>
+
+		</article>
+	</main>
+	<footer> </footer>
+</body>
+<script type="text/javascript" src="resources/js/login.js"></script>
+<script type="text/javascript" src="resources/js/signup.js"></script>
+<script type="text/javascript" src="resources/js/selection.js"></script>
+<script type="text/javascript" src="resources/js/search.js"></script>
+<script src="https://kit.fontawesome.com/6478f529f2.js"
+	crossorigin="anonymous">
+</script>
+
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+
+<!--아이디 및 비밀번호 확인-->
+<resultMap type="org.zerock.domain.MemberVO" id="member">
+	<result property ="memberId" column ="mem_id"/>
+	<result property ="memberPw" column ="mem_pw"/>
+</resultMap>
+
+<select id = "tryLogin" resultMap="member">
+select * from member_table where mem_id =#{memberId} and mem_pw = #{memberPw}
+</select>
+
+</mapper>
+

@@ -1,0 +1,13 @@
+
+
+$(document).ready(function () {
+	
+	//댓글 delete 버튼 클릭 시 댓글 삭제 
+	 var memberId = $("#replyDeleteBtn").data("replyNum);
+	$("#replyDeleteBtn").on("click", function (event) { 
+
+		alert(memberId);
+        
+    });
+  
+});

@@ -1,0 +1,12 @@
+package org.zerock.domain;
+
+public class PageCriteria {
+	
+	int total;
+	int size;
+	int page;
+	int totalPages =(int) Math.ceil(total/size);
+	boolean prev;
+	boolean next;
+
+}

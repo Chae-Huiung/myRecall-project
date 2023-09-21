@@ -1,0 +1,13 @@
+package org.zerock.mapper;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+import org.zerock.domain.CarVO;
+
+@Mapper
+public interface SearchMapper {
+
+	public int getRecallPostCount(@Param("searchStrs") ArrayList<String> searchStrs);
+}

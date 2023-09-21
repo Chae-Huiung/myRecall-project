@@ -1,0 +1,67 @@
+package org.zerock.persistence;
+
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.CarVO;
+import org.zerock.domain.PageCriteria;
+import org.zerock.domain.RecallVO;
+import org.zerock.mapper.SearchMapper;
+import org.zerock.mapper.SelectionMapper;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.log4j.Log4j;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { org.zerock.config.RootConfig.class })
+@Log4j
+public class SearchMapperTest {
+
+	@Autowired
+	SearchMapper searchMapper;
+
+	@Test
+	public void getTotalPost() {
+		ArrayList<String> searchStrs = new ArrayList<String>();
+
+		searchStrs.add("에어백");
+		searchStrs.add("현대");
+		searchStrs.add("아반떼");
+		
+		
+		int totalPostCount = searchMapper.getRecallPostCount(searchStrs);
+		log.info(totalPostCount);
+	}
+
+	@Test
+	public void getRecallPosts() {
+		ArrayList<String> searchStrs = new ArrayList<String>();
+
+		int page = 1;
+		int size =10;
+		
+		
+		searchStrs.add("에어백");
+		searchStrs.add("현대");
+		searchStrs.add("아반떼");
+		
+		int totalPostCount = searchMapper.getRecallPostCount(searchStrs);
+		log.info("totalPageCount :"+totalPostCount);
+		PageCriteria pageCri = new PageCriteria(totalPostCount, page, size);
+		log.info("pageCri :"+pageCri);
+		ArrayList<RecallVO> posts = searchMapper.getRecallPosts(searchStrs, pageCri);
+		
+		for(RecallVO post : posts){
+			log.info(post);
+		}
+
+	}
+}

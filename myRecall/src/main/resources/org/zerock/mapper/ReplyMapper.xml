@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+
+<!--댓글 등록-->
+<insert id="submitReply">
+    
+    <selectKey order="BEFORE"  keyProperty="memberNum" resultType="int">
+        SELECT mem_num FROM member_table WHERE mem_Id = #{memberId}
+    </selectKey>
+ 
+    INSERT INTO reply_table(reply_num,recall_num,mem_num,reply_text,mem_id)
+    VALUES (reply_seq.nextval,#{recallNum},#{memberNum},#{reply},#{memberId})
+</insert>
+
+<!--recallPost에 해당하는 reply 개수 반환  -->
+<select id ="getReplyCount" resultType="int">
+	select count(*) from reply_table where recall_num =#{recallNum}
+</select>
+
+<!-- recallPost에 해당하는 replyList 반환 -->
+<resultMap type="org.zerock.domain.ReplyVO" id="replyMap">
+	<id property="replyNum" column="reply_num"/>
+    <result property="memberNum" column="mem_num" />
+    <result property ="memberId" column ="mem_id"/>
+    <result property="recallNum" column="recall_num" />
+    <result property ="replyText" column ="reply_text"/>
+    <result property ="replyDate" column ="reply_date"/>
+    <result property ="likeCount" column="like_count"/>
+</resultMap>
+	
+   
+<select id ="getReplyList" resultMap="replyMap">
+select * from(
+select t.* ,ROWNUM AS rn from (
+select * from reply_table where recall_num =#{recallNum} order by reply_date desc
+)t
+)
+<![CDATA[
+	WHERE rn >=#{pageCri.firstPostNum} and rn <=#{pageCri.lastPostNum}
+]]>
+
+</select>
+
+
+<!--댓글 삭제 -->
+<delete id="delReply" parameterType="String">
+	delete from reply_table where reply_num =#{replyNum}
+</delete>
+
+<!--댓글 수정-->
+<update id="updateReply" parameterType="String">
+	update reply_table 
+	set reply_text =#{replyText}
+	where reply_num = #{replyNum}
+</update>
+
+</mapper>
+

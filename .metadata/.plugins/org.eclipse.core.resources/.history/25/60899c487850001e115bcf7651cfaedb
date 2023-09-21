@@ -1,0 +1,80 @@
+/* 게시판 테이블 스타일 */
+#listSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 10px;
+    border: 1px solid gainsboro;
+    width: 1500px;
+
+}
+
+thead {
+    height: 50px;
+    background-color: #26CEFF;
+}
+
+td {
+    text-align: center;
+}
+
+tr {
+    outline: none;
+
+}
+
+.postRow {
+    height: 35px;
+    color: black;
+
+}
+
+.postRow:nth-of-type(even) {
+    background-color: ghostwhite;
+}
+
+th:nth-of-type(1) {
+    width: 5%;
+}
+
+th:nth-of-type(2) {
+    width: 20%;
+}
+
+th:nth-of-type(5) {
+    width: 10%;
+}
+
+/* 페이징 버튼 */
+#pageBtn {
+    display: block;
+    border: 1px solid black;
+    border: 1px solid gainsboro;
+
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: fit-content;
+
+}
+
+ul li {
+  	list-style-type:none;
+    text-align: center;
+    color: gray;
+    width: 45px;
+    border: 1px solid gainsboro;
+}
+
+ul li:hover{
+	background-color:#26CEFF;
+}
+

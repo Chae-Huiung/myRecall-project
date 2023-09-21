@@ -1,0 +1,17 @@
+package org.zerock.domain;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
+public class ReplyVO {
+
+	private int replyNum;
+	private int memberNum;
+	private int recallNum;
+	private int replyText;
+	private int likeCount;
+	private String replyDate;
+	private PageCriteria pageCri;
+}

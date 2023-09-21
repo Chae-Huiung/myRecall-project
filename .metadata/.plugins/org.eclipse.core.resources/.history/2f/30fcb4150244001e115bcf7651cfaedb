@@ -1,0 +1,243 @@
+<%@page import="org.zerock.domain.RecallVO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page language ="java" contentType="text/html; charset=utf-8" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>recall list page</title>
+    <link rel="shortcut icon" type="image/x-icon" href="./img/logo.png">
+
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!--css -->
+    <link rel="stylesheet" href="resources/css/header.css">
+    <link rel="stylesheet" href="resources/css/footer.css">
+    <link rel="stylesheet" href="resources/css/mainPage.css">
+    <link rel="stylesheet" href="resources/css/login.css">
+    <link rel="stylesheet" href="resources/css/signup.css">
+    <link rel="stylesheet" href="resources/css/listPage.css">
+
+    <!--구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="desktopContainer">
+            <div id="logoContainer">
+                <a href=""><img id="mainLogo" src="resources/img/logo.png"></a>
+            </div>
+            <div id="searchContainer">
+                <div id="searchInput">
+                    <input type="text" placeholder="차량명 및 리콜사유 등을 검색해보세요!" />
+                    <button>
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+            <div id="BtnContainer">
+            	<c:choose>
+            	<c:when test="${memberId==null}">
+            		<button id="signupBtn">회원가입</button>
+                	<button id="loginBtn">로그인</button>
+            	</c:when>
+            	<c:when test="${memberId!=null}">
+            		<button id ="myPageBtn">마이페이지</button>
+            		<button id ="logoutBtn">로그아웃</button>
+            	</c:when>
+            	
+            	</c:choose>
+                
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!--selection 선택 후 검색하는 섹션 -->
+        <section id="selectionSection">
+            <div id="container">
+
+                <p>차량결함 리콜 조회 및<br>카카오톡 알림 서비스</p>
+
+                <div class="selectContainer">
+                    <select name="brand" class="select brandSel">
+                        <option>제조사</option>
+                            <c:forEach items="${brands}" var ="brand">
+                            <option value ="${brand}">${brand}</option>
+                            </c:forEach>
+                    </select>
+
+                    <!--https://pulpul8282.tistory.com/18  -->
+                    <select name="car" class="select carSel">
+                         <option>차량명</option>
+                            
+                    </select>
+                    <select name="year" class="select yearSel">
+                        <option>생산기간</option>
+                    </select>
+                    <button id="searchBtn" type="submit">검색</button>
+                </div>
+            </div>
+        </section>
+          <!--검색결과 게시판 보여주는 섹션-->
+        <section id="listSection">
+            <table>
+                <thead>
+                    <tr class="postRow">
+                        <th>번호</th>
+                        <th>제작사</th>
+                        <th>차량명</th>
+                        <th>리콜사유</th>
+                        <th>개시일</th>
+                    </tr>
+                </thead>
+                <c:forEach items="${posts}" var ="post" varStatus="status">
+                <tr>
+                	<td><a href="https://naver.com"><c:out value="${status.count}"/></a></td>
+                	<td><a href="https://naver.com"><c:out value="${post.brand}"/></a></td>
+                	<td><a href="https://naver.com"><c:out value ="${post.carName}"/></a></td>
+                	<c:set var ="subStr"  value="..."/>
+                	<c:choose>
+                		<c:when test ="${post.recallReason.length()<20}">
+                		<td><a href="https://naver.com"><c:out value ="${post.recallReason}"/></a></td>
+                	
+                		</c:when>
+                		<c:otherwise>
+                		<td><a href="https://naver.com"><c:out value ="${post.recallReason.substring(0,20)}${subStr}"/></a></td>
+                		</c:otherwise>
+                	</c:choose>    
+                	<td><a href="https://naver.com"><c:out value="${post.recallDate}"/></a></td>      	
+                </tr>
+      			
+                </c:forEach>
+   
+       
+            </table>
+            <!-- 페이징 버튼 -->
+            <div id="pageBtn">
+          	
+          		<ul>
+          		<!--화면에 표시할 버튼 개수 -->
+          		<c:set var ="ListSize" value ="10"/>
+          		<c:set  var = "first"  value ="${(pageCri.page-1)/ListSize}"/>
+          		<c:choose>
+          			<c:when test="${pageCri.prev ==true}"><li>prev</li></c:when>
+          			
+          			<li>${first}</li>
+          			
+          			<c:when test="${pageCri.next ==true}"><li>next</li></c:when>
+          		
+          		</c:choose>
+          		
+          		</ul>
+           
+            	
+                <!-- <ul>
+                    <li>prev</li>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                    <li>5</li>
+                    <li>6</li>
+                    <li>7</li>
+                    <li>8</li>
+                    <li>9</li>
+                    <li>10</li>
+                    <li>next</li>
+
+                </ul> -->
+            </div>
+        </section>
+ 
+       
+       
+        <!-- 로그인 버튼 클릭 시 모달로 로그인 화면 보여주는 article -->
+        <article id="loginArticle">
+            <div id="loginContainer">
+                <a href="">
+                    <img id="logoImg" src="resources/img/logo.png">
+                </a>
+                <form id="loginForm" action="/login" post="post">
+                    <div class="loginInput">
+                        <input id="LoginidInput" type="email" placeholder="이메일">
+                        <input id="pwInput" type="password" placeholder="비밀번호">
+                    </div>
+                    <button id="loginBtn">로그인</button>
+                </form>
+                <p>
+                    <a href="">아이디 찾기</a>
+                    <a href="">비밀번호 찾기</a>
+                    <a href="">회원가입</a>
+                </p>
+                <div class="otherLoginContainer">
+                    <button id="googleLoginBtn" type="button"><img src="resources/img/googleLoginButton.png"></button>
+                </div>
+            </div>
+        </article>
+        <!-- 회원가입 버튼 클릭 시 모달로 회원가입 화면 보여주는 article -->
+        <article id="signupArticle">
+            <div id="signupContainer">
+                <a href="">
+                    <img id="logoImg" src="resources/img/logo.png">
+                </a>
+                <form id="signupForm" action="/signUp/register" method="post">
+
+                    <div class="inputContainer">
+                        <input id="SignUpidInput" type="email" placeholder="이메일">
+                        <button class="checkBtn" id="emailCheckBtn" type="button">check</button>
+                    </div>
+                    <div class="inputContainer">
+                        <input class="pwInput" type="password" placeholder="비밀번호">
+                        <input class="pwInput" type="password" placeholder="비밀번호">
+                        <button class="checkBtn" id="pwCheckBtn" type="button">check</button>
+                    </div>
+                    <div class="inputContainer">
+                        <input id="phoneNumInput" type="tel" placeholder="전화번호">
+                        <button class="checkBtn" id="sendCodeBtn" type="button">send code</button>
+                    </div>
+                    <div class="inputContainer">
+                        <input id="codeInput" type="text" placeholder="코드">
+                        <button class="checkBtn"id ="codeCheckBtn" type="button">check code</button>
+                    </div>
+                    <div class="inputContainer">
+                        <select id="brandSel">
+                             <option>제조사</option>
+                            <c:forEach items="${brands}" var ="brand">
+                            <option value ="${brand}">${brand}</option>
+                            </c:forEach>
+                        </select>
+                        <select id="carSel">
+                            <option>차량명</option>
+                        </select>
+                        <select id="yearSel">
+                            <option>생산일</option>
+                        </select>
+                    </div>
+                    <button id="enrollBtn">회원가입</button>
+                    <div id="restTime" style="display: none;"></div>
+                </form>
+            </div>
+
+        </article>
+    </main>
+    <footer>
+    </footer>
+</body>
+<script type="text/javascript" src="resources/js/login.js"></script>
+<script type="text/javascript" src="resources/js/signup.js"></script>
+<script type="text/javascript" src="resources/js/selection.js"></script>
+<script type="text/javascript" src="resources/js/search.js"></script>
+<script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
+</script>
+
+</html>

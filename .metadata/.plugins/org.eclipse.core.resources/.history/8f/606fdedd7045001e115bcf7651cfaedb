@@ -1,0 +1,11 @@
+package org.zerock.mapper;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.zerock.domain.ReplyVO;
+
+@Mapper
+public class ReplyMapper {
+
+	//리콜 게시물 등록번호와 사용자 아이디를 받아 댓글 등록 
+	public ReplyVO submitReply();
+}

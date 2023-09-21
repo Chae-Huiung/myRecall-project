@@ -1,0 +1,67 @@
+package org.zerock.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.zerock.domain.MemberVO;
+import org.zerock.service.LoginService;
+
+@Controller
+@RequestMapping("/")
+public class LoginController {
+	
+	@Autowired
+	LoginService loginService;
+	
+	// 로그인 시도
+	@RequestMapping(value="/login", method=RequestMethod.POST,consumes ="application/json")
+	public ResponseEntity<String> login(@RequestBody MemberVO inputMember,HttpServletRequest request){
+		
+		MemberVO member = loginService.tryLogin(inputMember.getMemberId() , inputMember.getMemberPw());
+		HttpHeaders header = new HttpHeaders();
+		header.set("content-Type","text/plain;charset=utf-8");
+		
+		 // 기존 세션 무효화
+	    HttpSession oldSession = request.getSession(false); // 세션이 없을 경우에도 null 반환
+	    if (oldSession != null) {
+	        oldSession.invalidate();
+	    }
+
+	    if (member.getMemberId().equals(inputMember.getMemberId()) && member.getMemberPw().equals(inputMember.getMemberPw())) {
+	        // 로그인 가능: 새로운 세션 생성
+	        HttpSession newSession = request.getSession(true); // 새 세션 생성
+	        newSession.setAttribute("memberId", member.getMemberId());
+	        newSession.setMaxInactiveInterval(60 * 30); // 세션 30분동안 유효
+
+	        return new ResponseEntity<String>("로그인 성공", header, HttpStatus.OK);
+	    } else {
+	        // 로그인 불가능 :
+	        return new ResponseEntity<String>("로그인 실패", header, HttpStatus.UNAUTHORIZED);
+	    }
+			
+		
+	}
+	
+	
+	//로그아웃 시도
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public ResponseEntity<String> tryLogOut(HttpServletRequest request){
+		HttpSession oldSession = request.getSession();
+		oldSession.invalidate(); // 기존 세션 제거
+		
+		return ResponseEntity.status(HttpStatus.OK).body("logout");
+				
+		
+		
+	}
+
+	
+}

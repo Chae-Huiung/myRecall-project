@@ -1,0 +1,20 @@
+package org.zerock.domain;
+
+import java.sql.Date;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import oracle.sql.DATE;
+
+@Data
+@AllArgsConstructor
+public class ReplyVO {
+
+	private int replyNum;
+	private int memberNum;
+	private int recallNum;
+	private int replyText;
+	private int likeCount;
+//	private Date replyDate;
+	private PageCriteria pageCri;
+}

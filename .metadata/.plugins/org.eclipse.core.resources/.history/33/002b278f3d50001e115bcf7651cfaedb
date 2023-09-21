@@ -1,0 +1,26 @@
+
+
+$(document).ready(function () {
+
+    //댓글 delete 버튼 클릭 시 댓글 삭제  
+    var replyNum = $("#replyDeleteBtn").data("value");
+
+    $("#replyDeleteBtn").on("click", function (event) {
+
+        $.ajax({
+            url: "recallPost/deleteReply",
+            type: "post",
+            contentType: "text/plain",
+            dataType: "text",
+            data: replyNum,
+            success: function (response, xhr) {
+                console.log("http status: " + xhr.status);
+                alert(response);
+                location.reload();
+            },
+            error(xhr, status, error) {
+                console.log("http status: " + xhr.status);
+            }
+        });
+    });
+});

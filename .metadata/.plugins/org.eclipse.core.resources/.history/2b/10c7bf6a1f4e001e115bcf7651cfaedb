@@ -1,0 +1,88 @@
+package org.zerock.persistence;
+
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.CarVO;
+import org.zerock.domain.PageCriteria;
+import org.zerock.domain.RecallVO;
+import org.zerock.mapper.SearchMapper;
+import org.zerock.mapper.SelectionMapper;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.log4j.Log4j;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = { org.zerock.config.RootConfig.class })
+@Log4j
+public class SearchMapperTest {
+
+	@Autowired
+	SearchMapper searchMapper;
+
+	@Test
+	public void getTotalPost() {
+		ArrayList<String> searchStrs = new ArrayList<String>();
+
+//		searchStrs.add("에어백");
+//		searchStrs.add("현대");
+//		searchStrs.add("아반떼");
+		searchStrs.add("");
+
+		int totalPostCount = searchMapper.getRecallPostCount(searchStrs);
+		log.info(totalPostCount);
+	}
+
+	@Test
+	public void getRecallPosts() {
+
+		int page = 1;
+		int size = 10;
+
+		// 1. searchStr 공백 제거 후 단어로 분리
+		String searchStr = "  ";
+		ArrayList<String> searchStrs = new ArrayList<String>();
+		ArrayList<RecallVO> posts = new ArrayList<RecallVO>();
+		String[] strArr = searchStr.split("");
+		for (String str : strArr) {
+			log.info("str :" + str);
+			if(!str.equals(" ")){ //공백이 아닐 때만 리스트에 저장
+				searchStrs.add(str);
+			}
+		}
+		
+		if(!searchStrs.isEmpty()){ //검색어 리스트가 있을 때
+			int totalPostCount = searchMapper.getRecallPostCount(searchStrs);
+			PageCriteria pageCri = new PageCriteria(totalPostCount, page, size);
+			posts = searchMapper.getRecallPosts(searchStrs, pageCri);
+			
+			for (RecallVO post : posts) {
+				post.setPageCri(pageCri);
+			}
+		}
+		
+
+		
+//			// 2.검색 조건에 해당하는 전체 게시물 개수 파악
+//			int totalPostCount = searchMapper.getRecallPostCount(searchStrs);
+//			// 3. 페이징 기준 객체 생성 후 게시물 반환
+//			PageCriteria pageCri = new PageCriteria(totalPostCount, page, size);
+//			posts = searchMapper.getRecallPosts(searchStrs, pageCri);
+//			for (RecallVO post : posts) {
+//				post.setPageCri(pageCri);
+//			}
+//		
+//		for (RecallVO post : posts) {
+//			log.info(post);
+//		}
+
+	}
+}

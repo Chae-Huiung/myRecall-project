@@ -1,0 +1,7 @@
+$(document).ready(function () {
+  $(".pageBtnList").on("click", function (event) {
+    var clickedBtn = $(this); 
+    alert("clicked"); 
+    clickedBtn.css("background-color", "red");
+  });
+});

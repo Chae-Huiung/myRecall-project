@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.ReplyMapper">
+
+<!--댓글 등록-->
+<insert id ="submitReply" useGeneratedKeys="true" keyProperty="replyNum" >
+	<selectKey order="BEFORE" keyProperty="memberNum" resultType="int">
+		select member_num from member_table where memberId = #{memberId}
+	</selectKey>
+	insert into reply_table(mem_num,recall_text) 
+	values(#{memberNum},#{reply))
+</insert>
+
+</mapper>
+

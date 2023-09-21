@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="getRecallDataServiceTest" project="myRecall" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="org.zerock.service.getRecallDataServiceTest" time="2.906">
+    <testcase name="insertNewCarToCarTableTest" classname="org.zerock.service.getRecallDataServiceTest" time="0.242"/>
+    <testcase name="StrToJsonTest" classname="org.zerock.service.getRecallDataServiceTest" time="2.576"/>
+    <testcase name="getRecallPosts" classname="org.zerock.service.getRecallDataServiceTest" time="0.087"/>
+  </testsuite>
+</testrun>

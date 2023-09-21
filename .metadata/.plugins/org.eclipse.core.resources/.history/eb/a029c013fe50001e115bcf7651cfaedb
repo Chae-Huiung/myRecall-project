@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.zerock.mapper.MemberMapper">
+
+<!--1.아이디 중복 체크 후 중복 여부 반환 -->
+<select id="checkIdDupl" parameterType="String" resultType="String">
+	select mem_id from member_table where mem_id=#{memberId} 
+</select>
+<insert id ="registerMember" parameterType="org.zerock.domain.MemberVO">
+	 <selectKey resultType ="int" keyProperty ="carNum" order="BEFORE">
+		select car_num from car_table
+		 where brand = #{member.car.brand}
+		 	and car_name = #{member.car.carName}
+		 	and from_Date = #{member.car.fromDate}
+	</selectKey>
+	insert into member_table(mem_id,mem_pw,mem_phone,mem_role,car_num)
+	values(#{member.memberId}, #{member.memberPw},#{member.PhoneNum},'1',#{carNum})
+	
+</insert>
+
+<!--memberId로 member 검색 후 반환  -->
+<select id="getMember" resultType="org.zerock.domain.MemberVO"></select>
+
+</mapper>
+

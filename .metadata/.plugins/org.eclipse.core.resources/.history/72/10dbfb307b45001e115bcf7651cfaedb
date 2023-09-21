@@ -1,0 +1,8 @@
+package org.zerock.service;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes= {org.zerock.config.RootConfig.class})
+@Log4j
+public class ReplyServiceTest {
+
+}

@@ -1,0 +1,20 @@
+package org.zerock.service;
+
+import java.io.UnsupportedEncodingException;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.reactive.function.client.WebClient;
+import org.zerock.domain.PageCriteria;
+import org.zerock.domain.RecallVO;
+
+public interface GetRecallDataService {
+
+	
+	public void getRecallData() throws Exception;
+	
+	public void insertNewCarToCarTable() throws Exception;
+	
+	public ArrayList<RecallVO> getRecallPosts(String brand, String carName, String fromDate,PageCriteria pageCri);
+}

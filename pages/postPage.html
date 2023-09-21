@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리콜 상세정보</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/logo.png">
+
+    <!--css -->
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/postPage.css">
+    <link rel="stylesheet" href="css/alarm.css">
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <!--구글 폰트 링크 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="desktopContainer">
+            <div id="logoContainer">
+                <a href=""><img id="mainLogo" src="img/logo.png"></a>
+            </div>
+            <div id="searchContainer">
+                <div id="searchInput">
+                    <input type="text" placeholder="차량명 및 리콜사유 등을 검색해보세요!" />
+                    <button>
+                        <i class="fas fa-search-plus"></i>
+                    </button>
+                </div>
+
+            </div>
+            <!--로그아웃 상태-->
+            <div id="BtnContainer">
+                <button id="signupBtn">회원가입</button>
+                <button id="loginBtn">로그인</button>
+            </div>
+
+            <!--로그인 상태-->
+            <!-- <div class="dropdown">
+                <i class="fas fa-user"></i>
+                <div class="dropdownMenu">
+                    <a href="">로그아웃</a>
+                    <a href="">마이페이지</a>
+
+                </div>
+            </div> -->
+        </div>
+    </header>
+    <main>
+        <div id="postForm">
+            <div id="headline">
+                <span>리콜 상세정보</span>
+            </div>
+
+            <!-- 첨부파일 섬네일 이미지 -->
+            <div id='uploadResult'>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+                <div class="thumbnailContainer">
+                    <img src="img/honda.jpg">
+
+                </div>
+            </div>
+            <!--첨부파일 이미지 next 버튼 -->
+            <div id="nextBtnContainer">
+                <div class="nextBtn">
+                    <i class="fas fa-arrow-circle-left"></i>
+                </div>
+                <div class="nextBtn">
+                    <i class="fas fa-arrow-circle-right"></i>
+                </div>
+            </div>
+            <div id="postTableContainer">
+                <table>
+                    <tr>
+                        <th class="head">제작사</th>
+                        <td>bmw</td>
+                    </tr>
+                    <tr>
+                        <th class="head">차량명</th>
+                        <td>340i</td>
+                    </tr>
+                    <tr>
+                        <th class="head">생산기간(from)</th>
+                        <td>2021-01-01</td>
+                    </tr>
+                    <tr>
+                        <th class="head">생산기간(to)</th>
+                        <td>2022-01-01</td>
+                    </tr>
+                    <tr id="recallTextHead">
+                        <th colspan="2">리콜사유</th>
+                    </tr>
+                    <tr id="recallContent">
+                        <td colspan="2">현대 기아자동차(주)에서 제작 판매한 쏘나타 등 15차종(662,519대)에서 `브레이크 스위치 접촉 불량`으로 시동 불량과 제동등 점등 불량을
+                            유발함은 물론,
+
+                            ㅇ 정속주행장치 및 차체자세제어장치가 정상적으로 작동되지 않을 수 있는 문제점이 발견되었기 때문임
+
+
+                            * 정속주행장치(Cruise Control System) : 엑셀레이터 페달을 사용하지 않고도 자동차가 일정한 속도로 주행할 수 있게 유지시켜 주는 장치
+
+                            ** 차체자세제어장치(Vehicle Dynamic Control) : 각 바퀴의 제동력이나 엔진출력을 제어하여 차량이 흔들리지 않게 차체를 바로잡아 안전성을 확보하는
+                            장치
+
+
+                            리콜 대상 차량 (제작일자)
+
+                            현대자동차
+
+                            쏘나타 2008.10.01 ~ 2011.01.31
+                            투싼 2009.09.07 ~ 2010.11.30
+                            제네시스 2009.03.01 ~ 2010.11.22
+                            아반떼 2010.07.01 ~ 2011.01.03
+                            그랜저 2009.01.01 ~ 2010.11.30
+                            베라크루즈 2009.03.01 ~ 2011.07.31
+                            i30 2007.07.01 ~ 2011.08.15
+                            제네시스 쿠페 2008.08.01 ~ 2010.09.14
+
+                            기아자동차
+
+                            K5 2010.05.03 ~ 2011.04.24
+                            포르테 2008.08.01 ~ 2010.09.06
+                            스포티지 2010.01.28 ~ 2011.06.08
+                            로체 2008.05.01 ~ 2010.04.28
+                            모하비 2007.11.01 ~ 2011.03.13
+                            오피러스 2008.03.01 ~ 2009.06.29
+                            그랜드카니발 2007.06.21 ~ 2010.12.01</td>
+                    </tr>
+
+
+
+                </table>
+            </div>
+            <!--뒤로가기 버튼,카카오톡 알림 버튼,댓글 버튼-->
+            <div class="buttonContaier">
+                <div>
+                    <button id="backPostBtn" type="submit">back</button>
+                    <button id="sendMsgBtn" type="button">kakaoTalk</button>
+                </div>
+                <div>
+                    <button id="replyBtn" type="button">reply</button>
+                </div>
+            </div>
+            <!-- 댓글-->
+            <div id="replyContainer">
+                <!-- 댓글 헤더 -->
+                <div id="replyHeader">
+                    <i class="fas fa-comment-dots"> reply</i>
+                </div>
+                <!-- 댓글 달기 -->
+                <form id="replyForm" action="" method="">
+                    <textarea></textarea>
+                    <button id="replySubmitBtn" type="submit">submit</button>
+                    <button id="replyUpdateBtn" type="button">update</button>
+                </form>
+                <!-- 댓글 리스트 -->
+                <ul id="replies">
+                    <li class="replyList">
+                        <div class="idAndDate">
+                            <strong id="userId">ID: 라이언</strong>
+                            <small id="replyDate">2016-11-11</small>
+                        </div>
+                        <div class="replyText">
+                            <p>등속조인트 교환이후에도 증상이 해결되지 않습니다.</p>
+                        </div>
+                        <div class="replyBtn">
+                            <input type="">
+                            <button id="replyModifyBtn" type="submit">modify</button>
+                            <button id="replyDeleteBtn" type="submit">delete</button>
+                        </div>
+                    </li>
+                    <li class="replyList">
+                        <div class="idAndDate">
+                            <strong id="userId">ID: 라이언</strong>
+                            <small id="replyDate">2016-11-11</small>
+                        </div>
+                        <div class="replyText">
+                            <p>등속조인트 교환이후에도 증상이 해결되지 않습니다.</p>
+                        </div>
+                    </li>
+                </ul>
+                <!-- 댓글 페이징 버튼 -->
+                <div id="replyPageBtnContainer">
+                    <ul id="replyPageBtnList">
+                        <li>prev</li>
+                        <li>1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                        <li>6</li>
+                        <li>7</li>
+                        <li>8</li>
+                        <li>9</li>
+                        <li>10</li>
+                        <li>next</li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <input type="number" min="1900" max="2099" step="1" value="2022" />
+            <input type="radio" name="everyWeek" value="everyWeek" />매주
+            <input type="radio" name="everyDay" value="everyDay" />매일
+
+            <select name="day">
+                <option value="">day</option>
+                <option value="monday">monday</option>
+            </select>
+
+            <input type="time" required />
+
+
+
+
+
+            <article id="alarmArticle">
+                <div id="alarmContainer">
+                    <div id="headLine">
+                        <h3>카카오톡 전송 예약</h3>
+                    </div>
+                    <div class="container">
+                        <div class="titleBox">신규</div>
+                        <div>3</div>
+                    </div>
+                    <div class="container">
+                        <div class="titleBox">미열람</div>
+                        <div>3</div>
+                    </div>
+                    <div class="container">
+                        <div class="titleBox">전송 주기</div>
+                        <div>
+                            <input type="radio" name="everyWeek" value="everyWeek" />매주
+                            <input type="radio" name="everyDay" value="everyDay" />매일
+                        </div>
+                    </div>
+                    <div id="formContainer">
+                        <form>
+                            <div>
+                                <select name="day">
+                                    <option value="monday">월요일</option>
+                                    <option value="tuesday">화요일</option>
+                                    <option value="wednesday">수요일</option>
+                                    <option value="thursday">목요일</option>
+                                    <option value="friday">금요일</option>
+                                    <option value="saturday">토요일</option>
+                                    <option value="sunday">일요일</option>
+                                </select>
+                                <input type="time" name="time" />
+                            </div>
+
+                            <div id="buttonBox">
+                                <button id="cancelBtn" type="reset">cancel</button>
+                                <button id="reserveBtn" type="submit">reserve</button>
+                            </div>
+                        </form>
+
+                    </div>
+
+
+
+                </div>
+            </article>
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+    <footer>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/6478f529f2.js" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

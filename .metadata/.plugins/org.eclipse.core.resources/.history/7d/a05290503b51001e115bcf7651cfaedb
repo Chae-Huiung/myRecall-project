@@ -1,0 +1,8 @@
+$(document).ready(function () {
+//라디오 버튼 중 매일 선택되면 시간선택만 등장 
+$("#everyDayTerm").on("change",function(event){
+	alert("클릭");
+	$("#daySel").hide();
+});
+
+});

@@ -1,0 +1,61 @@
+package org.zerock.persistence;
+
+import static org.junit.Assert.fail;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.zerock.domain.CarVO;
+import org.zerock.mapper.SelectionMapper;
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import lombok.extern.log4j.Log4j;
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes={org.zerock.config.RootConfig.class})
+@Log4j
+public class SearchMapperTest {
+
+	@Autowired
+	private SelectionMapper selectionMapper;
+	@Test
+	//제조사 selection list select 테스트
+	public void selectBrands(){
+	ArrayList<String> brandList = selectionMapper.selectBrands();
+	for(String brand : brandList){
+		log.info("brand : "+ brand);
+	}	
+   }
+	@Test
+	public void selectCars(){
+		String brand = "현대자동차(주)";
+		ArrayList<String> carList = selectionMapper.selectCars(brand);
+		for(String car : carList){
+			log.info("car : "+ car);
+		}
+	}
+	
+	@Test
+	public void selectYears(){
+		String brand = "현대자동차(주)";
+		String carName = "싼타페 하이브리드(TM HEV)";
+		ArrayList<CarVO> cars = selectionMapper.selectYears(brand,carName);
+		for(CarVO car: cars){
+			log.info(car);
+		}
+		
+		ObjectMapper objectMapper = new ObjectMapper();
+	try {
+		String jsonString =	objectMapper.writeValueAsString(cars);
+		log.info("jsonString : "+jsonString);
+	} catch (JsonProcessingException e) {
+		e.printStackTrace();
+	}
+	}
+}

@@ -1,0 +1,151 @@
+/* form요소 스타일 */
+#postForm {
+    /* border: 1px solid black; */
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* 헤드라인(리콜 등록하기) 스타일  */
+#headline {
+    width: 800px
+}
+
+span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* 첨부한 이미지 div */
+#uploadResult {
+    margin: 10px;
+    width: 800px;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 첨부한 이미지 css */
+.humbnailContainer {
+    width: 180px;
+    height: 220px;
+    border: 1px solid gainsboro
+}
+
+#uploadResult img {
+    width: 180px;
+    height: 200px;
+    border: 1px solid gainsboro
+}
+
+
+/* 파일 첨부하기 버튼 스타일 */
+#fileUploadInput {
+    display: none;
+    width: 500px;
+}
+
+#imgContainer label {
+    border-radius: 6px;
+    width: 70px;
+    height: 25px;
+    background-color: #FF7867;
+    text-align: center;
+}
+
+#imgContainer label:hover {
+    opacity: 90%;
+}
+
+/* 인풋 요소 스타일 */
+.inputContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 800px;
+    margin: 10px;
+}
+
+.inputContainer input {
+    width: 500px;
+}
+
+.inputContainer input:focus {
+    border: none;
+    outline: 2px solid #26CEFF;
+
+}
+
+#recallText {
+    display: block;
+    width: 800px;
+    height: 250px;
+    border-radius: 5px;
+    background-color: #F4F4F3;
+}
+
+#recallText:focus {
+    border: none;
+    outline: 2px solid #26CEFF;
+}
+
+
+/* 저장,삭제,수정 버튼 */
+.buttonContaier {
+    width: 800px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.buttonContaier button {
+    outline: none;
+    border-radius: 5px;
+    border-color: rgb(0, 0, 0, 0);
+    width: 50px;
+    margin-left: 5px;
+}
+
+.buttonContaier button:hover {
+    opacity: 90%;
+}
+
+#createPostBtn {
+    background-color: #19C37D;
+}
+
+#deletePostBtn {
+    background-color: #FF7867;
+}
+
+#modifyPostBtn {
+    background-color: #FAE69E;
+}
+
+/* 첨부파일 이미지 next 버튼 */
+#nextBtnContainer {
+    position: absolute;
+    top: 200px;
+    /* border: 1px solid black; */
+    width: 900px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nextBtn {
+    width: 40px;
+    height: 100px;
+    /* border: 1px solid blue; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nextBtn i {
+    font-size: 40px;
+    color: #26CEFF;
+}
